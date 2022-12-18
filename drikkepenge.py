@@ -87,7 +87,7 @@ if __name__ == "__main__":
     tipProcent = getInput("Hvor mange procent vil du give: ")
     tip = calculateTip(totalPrice, tipProcent)
     
-    print("Drikkepenge: {:.2f}".format(tip)) # print med 2 cifre
+    print(f"Drikkepenge: {tip:.2f}") # print med 2 cifre
     print(f"Total beløb: {int(totalPrice + tip)}\n") # print beløb som heltal
 
     message = input("Hvad synes du om servicen: ")
