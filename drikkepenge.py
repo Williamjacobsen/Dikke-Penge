@@ -24,7 +24,6 @@ def menu():
     """)
 
 def loading(s: str, interval: int): # load, en tekst med 10 "." efter over 1 sekund
-    print("")
     for i in range(interval): # antal "."'s du vil have
         print(s + "."*i, end='\r') # \r gør std outputet replacable
         time.sleep(0.1)
@@ -38,6 +37,7 @@ def json_checker(): # hvis der ikke er en fil, eller filen er tom
     except IOError as e: # hvis filen ikke findes
         # (IOError er en os relateret error f.eks hvis den ikke kan åbne en fil)
         print(e)
+        print("")
         loading("[Creating file 'service.json' in current directory]", 5)
         os.system("type nul > service.json") # lav en ny fil
         print("['service.json' successfully created]\n")
@@ -58,6 +58,7 @@ def json_checker(): # hvis der ikke er en fil, eller filen er tom
 
 def save_to_json(message: str):
     with open("service.json", "r") as f:
+        print("")
         loading("[Saving to 'service.json']", 5)
         data = json.loads(f.read()) # "loads" går så jeg kan tilgå json obj
         data["Messages"].append(str(message))
@@ -85,6 +86,7 @@ def getInput(usrQuestion: str) -> int: # modtag et positivt heltal
 
 def calculateTip(totalPrice: int, tipProcent: int) -> int: 
     # tror virklig ikke det er nødvendigt er srkive noter her :)
+    print("")
     loading("Calculating tip", 10)
     print("")
     return totalPrice/tipProcent
