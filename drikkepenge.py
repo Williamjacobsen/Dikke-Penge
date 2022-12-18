@@ -17,7 +17,7 @@ print(""" /$$$$$$$            /$$ /$$       /$$                       /$$$$$$$
                                                                                           /$$  \ $$          
                                                                                          |  $$$$$$/          
                                                                                           \______/           
-Lavet af William & Søren
+Lavet af William
 """)
 
 def json_checker(): # hvis der ikke er en fil, eller filen er tom
