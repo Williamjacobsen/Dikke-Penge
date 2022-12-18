@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 if os.name == 'nt': # hvis det er windows
     os.system('cls')
@@ -20,6 +21,13 @@ print(""" /$$$$$$$            /$$ /$$       /$$                       /$$$$$$$
 Lavet af William
 """)
 
+def loading(s: str, interval: int): # load, en tekst med 10 "." efter over 1 sekund
+    print("")
+    for i in range(interval): # antal "."'s du vil have
+        print(s + "."*i, end='\r') # \r gør std outputet replacable
+        time.sleep(0.1)
+    print("")
+
 def json_checker(): # hvis der ikke er en fil, eller filen er tom
     # check om filen findes
     try: # prøv at åbne, men hvis den ikke er der, trower den en IOError
@@ -28,7 +36,7 @@ def json_checker(): # hvis der ikke er en fil, eller filen er tom
     except IOError as e: # hvis filen ikke findes
         # (IOError er en os relateret error f.eks hvis den ikke kan åbne en fil)
         print(e)
-        print("[Creating file 'service.json' in current directory]")
+        loading("[Creating file 'service.json' in current directory]", 5)
         os.system("type nul > service.json") # lav en ny fil
         print("['service.json' successfully created]\n")
     
@@ -36,7 +44,7 @@ def json_checker(): # hvis der ikke er en fil, eller filen er tom
     isEmptyFile = False
     with open("service.json", "r") as f:
         if f.read() == "": # hvis den er tom
-            print("[Formatting 'service.json']")
+            loading("[Formatting 'service.json']", 5)
             isEmptyFile = True
         f.close()
     if isEmptyFile:
@@ -48,7 +56,7 @@ def json_checker(): # hvis der ikke er en fil, eller filen er tom
 
 def save_to_json(message: str):
     with open("service.json", "r") as f:
-        print("[Saving to 'service.json']")
+        loading("[Saving to 'service.json']", 5)
         data = json.loads(f.read()) # "loads" går så jeg kan tilgå json obj
         data["Messages"].append(str(message))
         f.close()
@@ -75,6 +83,8 @@ def getInput(usrQuestion: str) -> int: # modtag et positivt heltal
 
 def calculateTip(totalPrice: int, tipProcent: int) -> int: 
     # tror virklig ikke det er nødvendigt er srkive noter her :)
+    loading("Calculating tip", 10)
+    print("")
     return totalPrice/tipProcent
 
 if __name__ == "__main__": 
