@@ -9,7 +9,7 @@ def clear():
         os.system('clear')
 
 def menu():
-    print(""" /$$$$$$$            /$$ /$$       /$$                       /$$$$$$$                                        
+    print("""   /$$$$$$$            /$$ /$$       /$$                       /$$$$$$$                                        
     | $$__  $$          |__/| $$      | $$                      | $$__  $$                                       
     | $$  \ $$  /$$$$$$  /$$| $$   /$$| $$   /$$  /$$$$$$       | $$  \ $$ /$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$ 
     | $$  | $$ /$$__  $$| $$| $$  /$$/| $$  /$$/ /$$__  $$      | $$$$$$$//$$__  $$| $$__  $$ /$$__  $$ /$$__  $$
@@ -89,7 +89,7 @@ def calculateTip(totalPrice: int, tipProcent: int) -> int:
     print("")
     loading("Calculating tip", 10)
     print("")
-    return totalPrice/tipProcent
+    return totalPrice * (tipProcent / 100)
 
 if __name__ == "__main__": 
     # gør programmet hvis filen er kaldt dirkete 
@@ -103,8 +103,8 @@ if __name__ == "__main__":
     tipProcent = getInput("Hvor mange procent vil du give: ")
     tip = calculateTip(totalPrice, tipProcent)
     
-    print(f"Drikkepenge: {tip:.2f}") # print med 2 cifre
-    print(f"Total beløb: {int(totalPrice + tip)}\n") # print beløb som heltal
+    print(f"Drikkepenge: {round(tip,2):.2f}") # print med 2 cifre
+    print(f"Total beløb: {round(totalPrice + tip)}\n") # print beløb som heltal
 
     message = input("Hvad synes du om servicen: ")
     save_to_json(message)
