@@ -75,12 +75,12 @@ def getInput(usrQuestion: str) -> int: # modtag et positivt heltal
         try: # hvis de skriver et bogstav er der en error
             usrInput = int(input(usrQuestion)) # vi for et heltal som input
             if usrInput <= 0: # hvis det er mindre end eller det samme som 0
-                print("Nummeret er for lavt...")
+                print("[Number is to low]")
         except Exception: 
             # hvis der sker en error 
             # (Exception gælder kun typiske error og 
             # ikke hvis brugeren prøver at stoppe programmet ved at trykke ctrl+c)
-            print("Ikke et nummer...")
+            print("[Input is not a number]")
             usrInput = 0 # så den fortsætter unden errors
     return usrInput # returner input hvis den er succesfuldt
 
